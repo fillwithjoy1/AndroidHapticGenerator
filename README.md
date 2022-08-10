@@ -4,5 +4,4 @@ that I have fully explained [here](https://stackoverflow.com/questions/73300257/
 Application should be compatible with Android version >= 12 (API level >=31):
 HapticGenerator API is not supported by all phone models.
 
-![screencapture](doc/screencapture.png)
-
+<img src="doc/screencapture.png" alt="screencapture" width="250"/>
