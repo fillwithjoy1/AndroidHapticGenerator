@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.audiofx.HapticGenerator;
 import android.os.Bundle;
@@ -59,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
     private void play() {
         button.setEnabled(false);
         releasePlayer();
-        player = MediaPlayer.create(getApplicationContext(), R.raw.sniper_rifle);
+        AudioManager audioManager = this.getSystemService(AudioManager.class);
+        player = MediaPlayer.create(getApplicationContext(), R.raw.sniper_rifle,
+                new AudioAttributes.Builder().setHapticChannelsMuted(false).build(),
+                audioManager.generateAudioSessionId());
         if (HapticGenerator.isAvailable()) {
             hapticGenerator = HapticGenerator.create(player.getAudioSessionId());
             hapticGenerator.setEnabled(true);
